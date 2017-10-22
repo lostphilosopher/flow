@@ -10,6 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20171018032021) do
+
+  create_table "plan_stages", force: :cascade do |t|
+    t.integer  "plan_id"
+    t.integer  "stage_id"
+    t.integer  "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_plan_stages_on_plan_id"
+    t.index ["stage_id"], name: "index_plan_stages_on_stage_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "stages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "url"
+    t.string   "stage_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end

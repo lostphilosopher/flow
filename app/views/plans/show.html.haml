@@ -1,0 +1,5 @@
+= @plan.name
+%br
+= @plan.description
+%br
+= link_to('Start', plan_stage_path(id: @plan.starting_stage.id))
