@@ -19,7 +19,7 @@ stage_1 = Stage.create(
 
 stage_2 = Stage.create(
   name: 'Stage 2: Video',
-  url: 'https://www.youtube.com/embed/hC7IMj7WFyE',
+  url: 'https://www.youtube.com/embed/CHFfejYUX-U',
   stage_type: 'video'
 )
 

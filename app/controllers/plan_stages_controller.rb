@@ -5,6 +5,7 @@ class PlanStagesController < ApplicationController
   end
 
   private
+
   def find
     @plan_stage = PlanStage.find_by(id: params[:id])
     @plan = Plan.find_by(id: @plan_stage.plan_id)

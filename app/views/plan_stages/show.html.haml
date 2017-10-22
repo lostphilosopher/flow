@@ -1,8 +1,15 @@
 PLAN:
 = @plan.name
 %br
-STAGE:
-= @stage.name
-%br
-= @stage.description
-
+.text-center
+  - if @stage.stage_type == 'video'
+    %iframe{:allowscriptaccess => 'always', :allowFullScreen => 'true', :frameborder => '0', :height => '315', :width => '560', :src => "#{@stage.url}", :title => "YouTube video player"}
+  - elsif @stage.stage_type == 'discussion' 
+    %iframe{:allowscriptaccess => 'always', :allowFullScreen => 'true', :frameborder => '0', :height => '630', :width => '1120', :src => "#{@stage.url}", :title => "Embedded discussion"}
+  - else
+    STAGE:
+    = @stage.name
+    %br
+    = @stage.description
+  %br
+  = link_to('Next', plan_stage_path(id: @plan_stage.next.id))
