@@ -12,4 +12,8 @@ class PlanStage < ApplicationRecord
       plan_id: plan_id
     )
   end
+
+  def last?
+    self.next.nil?
+  end
 end

@@ -7,4 +7,14 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    .container-fluid
+      .row.header
+        %h1
+          = link_to('Flow', root_path)    
+      .row
+        .col-xs-6.col-xs-offset-3.content
+          // Content
+          = yield
+      .row.footer
+        .text-center
+          Flow

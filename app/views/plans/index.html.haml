@@ -1,0 +1,11 @@
+- @plans.each do |plan|
+  .panel
+    .panel-header
+      %strong
+        = plan.name
+    .panel-body
+      = plan.description
+      %br
+      .text-right
+        = link_to('Let\'s do it', plan_plan_stage_path(plan_id: plan.id, id: plan.starting_stage.id))
+  %br
