@@ -1,7 +1,11 @@
 class PlansController < ApplicationController
-  before_action :find
+  before_action :find, except: [:index]
 
   def show
+  end
+
+  def index
+    @plans = Plan.all
   end
 
   private
