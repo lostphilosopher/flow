@@ -58,3 +58,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5.2'
   gem 'pry-rails', '~> 0.3.6'
 end
+
+group :production do
+  gem 'pg', '~> 0.18.2'
+end
