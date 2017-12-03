@@ -6,7 +6,7 @@ class StagesController < ApplicationController
   def create
     stage = Stage.new(stage_params)
     if stage.save
-      redirect_to stages_route(stage)
+      redirect_to new_stage_path
     else
       //
     end

@@ -1,0 +1,9 @@
+= form_for([@plan, @plan_stage]) do |f|
+  .form-group
+    %label
+      Stage Name
+    = f.select :stage_id, Stage.all.map { |stage| [stage.name, stage.id] }
+  = f.hidden_field(:order, value: @previous_plan_stage.next_order)
+  = f.hidden_field(:plan_id, value: @plan.id)
+  .form-controls
+    = f.submit "Submit", class: 'btn btn-primary btn-lg'

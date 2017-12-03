@@ -1,5 +1,17 @@
-= @plan.name
+%h1
+  = @plan.name
 %br
-= @plan.description
+%p
+  = @plan.description
+
+%hr
+  %strong
+    Stages:
 %br
-= link_to('Start', plan_stage_path(id: @plan.starting_stage.id))
+- @plan.stages.each do |stage|
+  = stage.name
+  %br
+
+= link_to('Start', plan_plan_stage_path(plan_id: @plan.id, id: @plan.starting_plan_stage.id))
+
+= button_to('Publish', publish_plan_path(id: @plan.id), method: :post) unless @plan.published?

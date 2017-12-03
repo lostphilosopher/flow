@@ -1,18 +1,6 @@
 class PlansController < ApplicationController
   before_action :find, except: [:index, :new, :create]
 
-  def build_new
-  end
-
-  def build_create
-    plan_stage = PlanStage.new(plan_id: @plan.id, stage_id: build_params[:stage_id])
-    if plan_stage.save
-      redirect_to build_new_plan_path(id: @plan.id)
-    else
-      #
-    end
-  end
-
   def new
     @plan = Plan.new
   end
@@ -30,7 +18,13 @@ class PlansController < ApplicationController
   end
 
   def index
-    @plans = Plan.all
+    @unpublished_plans = Plan.where(published: [false, nil])
+    @published_plans = Plan.where(published: true)
+  end
+
+  def publish
+    @plan.update(published: true)
+    redirect_to plan_path(id: @plan.id)
   end
 
   private
@@ -44,9 +38,5 @@ class PlansController < ApplicationController
       :name,
       :description
     )
-  end
-
-  def build_params
-    params.require(:stage).permit(:stage_id)
   end
 end

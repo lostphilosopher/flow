@@ -1,4 +1,4 @@
-- @plans.each do |plan|
+- @unpublished_plans.each do |plan|
   .panel
     .panel-header
       %strong
@@ -7,5 +7,18 @@
       = plan.description
       %br
       .text-right
-        = link_to('Let\'s do it', plan_plan_stage_path(plan_id: plan.id, id: plan.starting_stage.id))
+        = link_to('Add Stages to Plan', new_plan_plan_stage_path(plan_id: plan.id))
+  %br
+
+
+- @published_plans.each do |plan|
+  .panel
+    .panel-header
+      %strong
+        = plan.name
+    .panel-body
+      = plan.description
+      %br
+      .text-right
+        = link_to('Let\'s do it', plan_plan_stage_path(plan_id: plan.id, id: plan.starting_plan_stage.id))
   %br

@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 plan_1 = Plan.create(
+  published: true,
   name: 'General Pain Management Plan',
   description: 'Sometimes pain has a purpose — it can alert us that we\'ve sprained an ankle, for example. But for many people, pain can linger for weeks or even months, causing needless suffering and interfering with quality of life. If your pain has overstayed its welcome, you should know that you have more treatment options today than ever before. Here, we\'ve listed eight techniques to control and reduce your pain that don\'t require an invasive procedure — or even taking a pill.'
 )
@@ -73,6 +74,7 @@ i = 0
 end
 
 plan_2 = Plan.create(
+  published: true,
   name: 'Quick Relief for Immediate Pain',
   description: 'A plan meant to provide some immediate relief of current pain.'
 )
