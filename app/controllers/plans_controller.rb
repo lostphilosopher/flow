@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
   before_action :find, except: [:index, :new, :create]
+  before_action :validate_admin_or_creator, only: [:new, :create, :publish]
 
   def new
     @plan = Plan.new

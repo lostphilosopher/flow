@@ -1,4 +1,6 @@
 class StagesController < ApplicationController
+  before_action :validate_admin_or_creator, only: [:new, :create]
+
   def new
     @stage = Stage.new
   end

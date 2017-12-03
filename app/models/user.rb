@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def admin_or_creator?
+    admin? || creator?
+  end
+
   def admin?
     role == 'admin'
   end

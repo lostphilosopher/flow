@@ -1,5 +1,6 @@
 class PlanStagesController < ApplicationController
   before_action :find
+  before_action :validate_admin_or_creator, only: [:new, :create]
 
   def new
     @plan_stage = PlanStage.new

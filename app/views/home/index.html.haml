@@ -2,4 +2,5 @@
   Flow: Guided Learning for Chronic Pain Management
 
 .text-center
-  = link_to('Jump in', plans_path, class: 'btn btn-primary')
+  - path = current_user ? plans_path : new_user_session_path
+  = link_to('Jump in', path, class: 'btn btn-primary')
