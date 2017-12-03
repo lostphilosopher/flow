@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :plans do
+    member do
+      get :build_new
+      post :build_create
+    end
     resources :plan_stages
   end
   resources :stages

@@ -1,0 +1,20 @@
+%h2
+  Build Your Plan
+  .small
+    = @plan.name
+%h3
+  - if @plan.stages.empty?
+    Select the first Stage
+  - else 
+    Select the next stage
+%strong
+  Previous Stage @todo order >
+
+
+= form_tag(build_create_plan_path) do
+  .form-group
+    %label
+      Stage Name
+    = select :stage, :stage_id, Stage.all.map { |stage| [stage.name, stage.id] }
+  .form-controls
+    = submit_tag "Submit", class: 'btn btn-primary btn-lg'
