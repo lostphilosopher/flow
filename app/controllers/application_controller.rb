@@ -4,13 +4,13 @@ class ApplicationController < ActionController::Base
   private
 
   def validate_admin_or_creator
-    flash[:alert] = "That action can only be performed by admins or creators"
+    flash[:alert] = "That action can only be performed by admins or creators" unless admin_or_creator?
     redirect_to root_path unless admin_or_creator?
   end
 
   def validate_admin
-    flash[:alert] = "That action can only be performed by admins"
-    redirect_to root_path unless admin_or_creator?
+    flash[:alert] = "That action can only be performed by admins" unless admin?
+    redirect_to root_path unless admin?
   end
 
   def admin_or_creator?
