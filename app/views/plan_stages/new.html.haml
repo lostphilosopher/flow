@@ -1,0 +1,17 @@
+%h2
+  Build Your Plan
+  .small
+    = @plan.name
+  - if @previous_plan_stage.persisted?
+    %h3
+      Select the next Stage
+    %stong
+      Previous Stage
+    = @previous_plan_stage.stage.name
+  - else
+    Select the first Stage
+
+= render 'plan_stages/form'
+
+= link_to 'Review and Publish Your Plan', plan_path(id: @plan.id) if @previous_plan_stage.persisted?
+

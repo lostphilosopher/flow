@@ -1,0 +1,10 @@
+= form_for(@plan) do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Name'
+  .form-group
+    = f.label :description
+    = f.text_field :description, class: 'form-control', placeholder: 'Description'
+  .form-controls
+    = f.submit "Submit", class: 'btn btn-primary btn-lg'
+  
