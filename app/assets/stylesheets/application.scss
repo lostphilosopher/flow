@@ -9,12 +9,12 @@ html {
 body {
 	// Background image
 	height: 100%;
-  background-image: url("rocks_on_shore.jpg");
+  background-image: url('/rocks_on_shore.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	min-height: 2000px;
- 	// Font 
+	min-height: 2000px; // @todo this isn't right...
+ 	// Font
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 .header {
