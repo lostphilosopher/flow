@@ -8,8 +8,9 @@
     .panel-body
       = plan.description
       %br
-      .text-right
-        = link_to('Add Stages to Plan', new_plan_plan_stage_path(plan_id: plan.id))
+      - if current_user.admin_or_creator?
+        .text-right
+          = link_to('Add Stages to Plan', new_plan_plan_stage_path(plan_id: plan.id))
   %br
 
 
