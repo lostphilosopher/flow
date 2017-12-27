@@ -1,13 +1,18 @@
 %h1
   Creator Options
 
-= link_to 'Create a Plan', new_plan_path
-%br
+.button-box-container
+  .button-box
+    = link_to 'Create a Flow', new_plan_path
 
-= link_to 'Create a Stage', new_stage_path
-%br
+  .button-box
+    = link_to 'Create a Stage', new_stage_path
 
-= link_to 'Publish a Plan', plans_path
-%br
+  .button-box
+    = link_to 'Edit a Flow', plans_path
 
-= link_to 'Add Stages to a Plan', plans_path
+  .button-box
+    = link_to 'Publish a Flow', plans_path
+
+  .button-box
+    = link_to 'Add Stages to a Flow', plans_path
