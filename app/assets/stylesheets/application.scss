@@ -37,3 +37,22 @@ body {
 	background:rgba(255,255,255,0.5);
   padding: 20px;
 }
+.button-box-container {
+  text-align: center;
+  display: inline-block;
+  margin: auto;
+  width: 100%;
+}
+.button-box {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background-color: #87B5DE;
+  color: white;
+  margin: 5px 5px;
+  text-align: center;
+  line-height: 200px;
+  a {
+    color: white;
+  }
+}

@@ -1,6 +1,6 @@
 class PlanStagesController < ApplicationController
   before_action :find
-  before_action :validate_admin_or_creator, only: [:new, :create]
+  before_action :validate_admin_or_creator, only: [:new, :create, :destroy]
 
   def new
     @plan_stage = PlanStage.new
@@ -17,6 +17,12 @@ class PlanStagesController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    @plan_stage.delete
+    @plan.refresh_order
+    redirect_to plan_path(id: @plan.id)
   end
 
   private
