@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    resources :accounts
+  end
   resources :plans do
     resources :plan_stages
     member do
