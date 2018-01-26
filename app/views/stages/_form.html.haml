@@ -31,7 +31,7 @@
   .form-group
     = f.label :stage_type
     - # @todo: Clean this up
-    = select(:stage_type, :stage_type, options_for_select(['general', 'todo', 'survey', 'video', 'discussion'], @stage.stage_type.to_s))
+    = f.select(:stage_type, options_for_select(['general', 'todo', 'survey', 'video', 'discussion'], @stage.stage_type.to_s))
   #url.form-group
     = f.label :url
     = f.text_field :url, class: 'form-control', placeholder: 'URL'
@@ -40,13 +40,13 @@
 
 :javascript
   var url_stage_types = ['survey', 'video', 'discussion'];
-  var selected_stage_type = $('#stage_type_stage_type')[0].value;
+  var selected_stage_type = $('#stage_stage_type')[0].value;
   if(url_stage_types.includes(selected_stage_type)) {
   } else {
     $('#url').hide();
   };
-  $('#stage_type_stage_type').change(function() {
-    selected_stage_type = $('#stage_type_stage_type')[0].value;
+  $('#stage_stage_type').change(function() {
+    selected_stage_type = $('#stage_stage_type')[0].value;
     if(url_stage_types.includes(selected_stage_type)) {
       $('#url').show();
     } else {

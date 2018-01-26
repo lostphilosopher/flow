@@ -1,0 +1,93 @@
+%h2
+  Creator Tutorial
+
+%h3
+  Introduction
+
+%p
+  A "course," or series of steps you want a participant ("User") to go through is called a <strong>"Flow"</strong>.
+  Each step is called a <strong>"Stage."</strong>. These Stages are the the building blocks of your Flows.
+  Once you've created a Stage you can use it in any number of Flows, and a Flow can have any number of Stages.
+
+%h4
+  Flows
+
+%p
+  Every Flow has a Name (or title) and a Description. The title should be clear and concise, and should encourage a User to read more about the Flow. They can learn more in the Description. This can be a longer block of text explaining what the Flow consists of, what it's meant to do, and why a user should try it.
+
+%p
+  Any flow can be Published or Unpublished at any time, and a User can only see Published Flows.
+
+%p
+  You can edit, delete, publish, or unpublish, a Flow at any time.
+
+%h4
+  Stages
+
+%p
+  Stages are the building blocks of Flows. They all consist of at least a Name (or Title) and a Description (both are always required). The Description is what you want to tell the User - the "meat" of the course - the content.
+
+%h4
+  Stages come in various types:
+
+%ul
+  %li
+    %strong
+      General:
+    Stages with text (Name and Description) only.
+  %li
+    %strong
+      ToDo:
+    Very similar to General stages, except any time a user enters a ToDo Stage they will be sent an email with the contents of the Stage - think of these as "homework" assignments.
+  %li
+    %strong
+      Video:
+    A Video stage has its content enhanced by a YouTube video with instructions, guided meditations, etc. You'll want to use a YouTube link with "embed" in it for it to work nicely in the in browser video player.
+  %li
+    %strong
+      Survey:
+    A Survey Stage includes an embedded Wufoo form that you've created. This is an opportunity to ask the User questions and collect information.
+  %li
+    %strong
+      Discussion
+    A Discussion Stage includes a link to a Slack Channel for a specific discussion topic. The User will have to go off site to participate.
+
+%p
+  %strong
+    Note:
+  Once you've created a Stage you cannot edit it's content. This is because it may be in use in other Flows besides your own. You also
+  cannot Delete a Stage until all the Flows it is a part of have been deleted.
+
+%h3
+  Creating your first Flow
+
+%p
+  While you can create Stages and Flows in any order, and recombine them later via "Add Stages to a Flow." It is recommended that you create your Flow like this:
+
+%ol
+  %li
+    First, gather all the content you want to include in your Flow Stages.
+  %li
+    Then, create your Flow, once you've submitted your Flow it will take you right into creating Stages
+  %li
+    Create you Stages, one at a time, in the order you want them to appear in your Flow.
+  %li
+    Once your Flow is complete, return to the Flow list page, find your Flow, and preview it to make sure you like it.
+  %li
+    Presuming you are happy with your Flow, Publish it.
+
+%p
+  %strong
+    Note:
+  While you can always remove Stages from a Flow there is no tool for reordering beyond deleting, and re-adding.
+
+.panel
+  .panel-body
+    .text-center
+      = link_to 'Create a Flow', new_plan_path
+      >
+      = link_to 'Create a Stage', new_stage_path
+      >
+      = link_to 'Add Stages to a Flow', plans_path
+      >
+      = link_to 'Publish a Flow', plans_path
