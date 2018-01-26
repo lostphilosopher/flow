@@ -10,7 +10,9 @@
     .embed-responsive.embed-responsive-16by9
       %iframe{:allowscriptaccess => 'always', :allowFullScreen => 'true', :frameborder => '0', :height => '315', :width => '560', :src => "#{@stage.url}", :title => "YouTube video player"}
   - elsif @stage.stage_type == 'discussion'
-    %iframe{:allowscriptaccess => 'always', :allowFullScreen => 'true', :frameborder => '0', :height => '315', :width => '560', :src => "#{@stage.url}", :title => "Embedded discussion"}
+    = link_to("Slack Discussion: #{@stage.name}", "#{@stage.url}", class: 'btn btn-default')
+    %br
+    %br
   - elsif @stage.stage_type == 'survey'
     <div id="wufoo-m1puiwx71b4a8ga">
     Fill out my <a href="#{@stage.url}">online form</a>.

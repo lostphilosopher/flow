@@ -38,8 +38,8 @@ stage_3 = Stage.create(
 
 stage_4 = Stage.create(
   name: 'Group Discussion',
-  description: 'Consider contributing to the following group discussion. The topic is "How do you feel?"',
-  url: 'https://demo102217.createaforum.com/general-discussion/this-is-a-demo-topic/',
+  description: 'Consider contributing to the following Slack group discussion. The topic is "How do you feel?"',
+  url: 'https://flowchronicpaindemo.slack.com/messages/C8YV1MWSF/',
   stage_type: 'discussion'
 )
 
