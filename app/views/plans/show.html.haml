@@ -8,7 +8,7 @@
   %strong
     Stages:
 %br
-- @plan.stages.each do |stage|
+- @plan.stages.sort.each do |stage|
   = stage.name
   - plan_stage = PlanStage.find_by(plan_id: @plan.id, stage_id: stage.id)
   = link_to('Preview', plan_plan_stage_path(plan_id: @plan.id, id: plan_stage.id))

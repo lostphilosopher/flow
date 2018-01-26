@@ -16,7 +16,7 @@
             = link_to 'Flows', plans_path
           - if current_user.admin_or_creator?
             %li
-              = link_to 'Create Content', admin_path
+              = link_to 'Manage Content', admin_path
           %li
             = link_to 'Sign out', destroy_user_session_path, { method: :delete }
         - else
