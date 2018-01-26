@@ -17,7 +17,7 @@
           = link_to("#{plan.name}", plan_path(id: plan.id))
           <br />
           .text-right
-            = link_to('Edit', '#') if current_user.admin?
+            = link_to('Edit', edit_stage_path(id: stage.id)) if current_user.admin?
       - else
         .text-right
           = link_to('Delete', stage_path(id: stage.id), method: :delete)
