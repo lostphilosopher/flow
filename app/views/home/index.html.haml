@@ -1,6 +1,1 @@
-%h1
-  Guided Learning for Chronic Pain Management
-
-.text-center
-  - path = current_user ? plans_path : new_user_session_path
-  = link_to('Jump in', path, class: 'btn btn-lg btn-primary')
+= "#{@cm.body}".html_safe if @cm
