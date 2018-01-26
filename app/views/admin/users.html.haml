@@ -1,0 +1,31 @@
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th
+        Created At
+      %th
+        Email
+      %th
+        Role
+      %th
+        Actions
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td
+          = "[#{user.created_at}]"
+        %td
+          = "#{user.email}"
+        %td
+          = "#{user.role.to_s}" if user.role
+        %td
+          - unless user.admin?
+            = link_to('Make Admin', admin_users_make_admin_path(id: user.id), method: :post)
+            %br
+          - unless user.creator?
+            = link_to('Make Creator', admin_users_make_creator_path(id: user.id), method: :post)
+            %br
+          - unless user.role.nil?
+            = link_to('Make User', admin_users_make_user_path(id: user.id), method: :post)
+            %br
+          = link_to('Delete', admin_users_delete_user_path(id: user.id), method: :delete)

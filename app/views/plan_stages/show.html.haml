@@ -10,7 +10,7 @@
     .embed-responsive.embed-responsive-16by9
       %iframe{:allowscriptaccess => 'always', :allowFullScreen => 'true', :frameborder => '0', :height => '315', :width => '560', :src => "#{@stage.url}", :title => "YouTube video player"}
   - elsif @stage.stage_type == 'discussion'
-    = link_to("Slack Discussion: #{@stage.name}", "#{@stage.url}", class: 'btn btn-default')
+    = link_to("Discussion: #{@stage.name}", "#{@stage.url}", class: 'btn btn-default')
     %br
     %br
   - elsif @stage.stage_type == 'survey'
