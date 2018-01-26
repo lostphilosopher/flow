@@ -1,24 +1,37 @@
-# README
+# Flow Chronic Pain Management Tool
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Production](https://flow-chronic-pain.herokuapp.com/)
 
-Things you may want to cover:
+## About
 
-* Ruby version
+This is a tool for helping people manage chronic pain.
 
-* System dependencies
+## Getting Started
 
-* Configuration
+This app uses standard Rails tooling.
 
-* Database creation
+`rake db:create`
 
-* Database initialization
+`rails s`
 
-* How to run the test suite
+Sign up
 
-* Services (job queues, cache servers, search engines, etc.)
+`rake user:assign_role[email_address,role] # make yourself an admin so you can manage Stages and Flows`
 
-* Deployment instructions
+### Running the tests
 
-* ...
+This project uses RSpec for testing.
+
+`bundle exec rspec`
+
+### Coding Standards
+
+@todo
+
+### Deployment
+
+This project uses Travis CI for deployment. Once a PR is merged into the Master branch it will be deployed to Heroku automatically.
+
+## Legal and Licensing
+
+This product and project is the property of Wyatt Andersen Consulting LLC.
