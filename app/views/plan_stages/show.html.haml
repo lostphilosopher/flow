@@ -1,21 +1,49 @@
 %h1
   = @plan.name
-%h2 
-  = @stage.name 
+%h2
+  = @stage.name
 %p
   = @stage.description
 %br
-// @todo: How to handle a responsive video embed?
 .text-center
   - if @stage.stage_type == 'video'
-    %iframe{:allowscriptaccess => 'always', :allowFullScreen => 'true', :frameborder => '0', :height => '315', :width => '560', :src => "#{@stage.url}", :title => "YouTube video player"}
-  - elsif @stage.stage_type == 'discussion' 
+    .embed-responsive.embed-responsive-16by9
+      %iframe{:allowscriptaccess => 'always', :allowFullScreen => 'true', :frameborder => '0', :height => '315', :width => '560', :src => "#{@stage.url}", :title => "YouTube video player"}
+  - elsif @stage.stage_type == 'discussion'
     %iframe{:allowscriptaccess => 'always', :allowFullScreen => 'true', :frameborder => '0', :height => '315', :width => '560', :src => "#{@stage.url}", :title => "Embedded discussion"}
   - elsif @stage.stage_type == 'survey'
-    <script>(function(t,e,s,n){var o,a,c;t.SMCX=t.SMCX||[],e.getElementById(n)||(o=e.getElementsByTagName(s),a=o[o.length-1],c=e.createElement(s),c.type="text/javascript",c.async=!0,c.id=n,c.src=["https:"===location.protocol?"https://":"http://","#{@stage.url}"].join(""),a.parentNode.insertBefore(c,a))})(window,document,"script","smcx-sdk");</script><a style="font: 12px Helvetica, sans-serif; color: #999; text-decoration: none;" href=https://www.surveymonkey.com> Create your own user feedback survey </a>
+    <div id="wufoo-m1puiwx71b4a8ga">
+    Fill out my <a href="#{@stage.url}">online form</a>.
+    </div>
+    <script type="text/javascript">var m1puiwx71b4a8ga;(function(d, t) {
+    var s = d.createElement(t), options = {
+    'userName':'wandersen02',
+    'formHash':'m1puiwx71b4a8ga',
+    'autoResize':true,
+    'height':'373',
+    'async':true,
+    'host':'wufoo.com',
+    'header':'show',
+    'ssl':true};
+    s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+    s.onload = s.onreadystatechange = function() {
+    var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+    try { m1puiwx71b4a8ga = new WufooForm();m1puiwx71b4a8ga.initialize(options);m1puiwx71b4a8ga.display(); } catch (e) {}};
+    var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+    })(document, 'script');
+    </script>
   - else
   %br
   - if @plan_stage.last?
     = link_to('Plan Complete - Return to Plan Selection', plans_path)
   - else
+    %div#timer
     = link_to('Next', plan_plan_stage_path(plan_id: @plan.id, id: @plan_stage.next_plan_stage.id), class: 'btn btn-primary')
+
+:javascript
+  $('#timer').append("Please don't proceed until you are finished with this content.");
+  $('.btn-primary').hide();
+  setTimeout(function() {
+     $('#timer').hide();
+     $('.btn-primary').fadeIn();
+  }, 5000);

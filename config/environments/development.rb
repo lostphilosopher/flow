@@ -31,6 +31,20 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Email (http://stackoverflow.com/questions/20297036/actionmailer-not-sending-mail-in-development)
+  # Requires running in insecure mode (https://myaccount.google.com/security?pli=1#connectedapps)
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: ENV['GOOGLE_USER_NAME'],
+    password: ENV['GOOGLE_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Print deprecation notices to the Rails logger.

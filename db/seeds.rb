@@ -26,7 +26,7 @@ stage_2 = Stage.create(
   name: 'Beginning Survey',
   stage_type: 'survey',
   description: 'Please complete the following survey.',
-  url: 'widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd2n0EyEqR4XLlegogsUllboC3LTV30qVY0OVKgyy7Dad.js'
+  url: 'https://wandersen02.wufoo.com/forms/m1puiwx71b4a8ga'
 )
 
 stage_3 = Stage.create(
@@ -53,7 +53,7 @@ stage_6 = Stage.create(
   name: 'Exit Survey',
   stage_type: 'survey',
   description: 'Please complete the following survey.',
-  url: 'widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd2n0EyEqR4XLlegogsUllboC3LTV30qVY0OVKgyy7Dad.js'
+  url: 'https://wandersen02.wufoo.com/forms/qu2rdmc16c0bij/'
 )
 
 i = 0

@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails', '~> 0.9.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 group :development, :test do
+  gem 'dotenv-rails', '~> 2.2.1'
   gem 'rspec-rails', '~> 3.5.2'
   gem 'pry-rails', '~> 0.3.6'
 end

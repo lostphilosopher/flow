@@ -17,6 +17,9 @@ class PlanStagesController < ApplicationController
   end
 
   def show
+    if @stage && @stage.stage_type == 'todo'
+      PlanStageMailer.homework(current_user, @stage).deliver_later
+    end
   end
 
   def destroy
