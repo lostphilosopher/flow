@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :cms
   devise_for :users
   resources :plans do
     resources :plan_stages

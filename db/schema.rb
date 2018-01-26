@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126034938) do
-
-  create_table "cms", force: :cascade do |t|
-    t.string   "name"
-    t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20171203183110) do
 
   create_table "plan_stages", force: :cascade do |t|
     t.integer  "plan_id"
