@@ -9,6 +9,9 @@
     = link_to 'Create a Stage', new_stage_path
 
   .button-box
+    = link_to 'Delete a Stage', stages_path
+
+  .button-box
     = link_to 'Edit a Flow', plans_path
 
   .button-box
@@ -16,3 +19,12 @@
 
   .button-box
     = link_to 'Add Stages to a Flow', plans_path
+
+- if current_user.admin?
+
+  %h1
+    Admin Options
+
+  .button-box-container
+    .button-box
+      = link_to 'Edit a Stage', stages_path

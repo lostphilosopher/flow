@@ -1,6 +1,12 @@
 class Plan < ApplicationRecord
   has_many :plan_stages, dependent: :destroy
   has_many :stages, through: :plan_stages
+  validates :name, presence: true
+  validates :description, presence: true
+
+  def has_stages?
+    plan_stages.count > 0
+  end
 
   def ending_plan_stage
     order = PlanStage.where(

@@ -1,0 +1,23 @@
+%h2
+  Stages
+  .small
+    Stages can be used in multiple Flows.
+    To avoid unintended consequences you cannot edit a Stage,
+    and you can only delete Stages that are not currently assigned to a Flow
+
+- @stages.each do |stage|
+  .panel.panel-info
+    .panel-heading
+      = "#{stage.name}"
+    .panel-body
+      - if stage.in_use?
+        In use in:
+        <br />
+        - stage.plans.each do |plan|
+          = link_to("#{plan.name}", plan_path(id: plan.id))
+          <br />
+          .text-right
+            = link_to('Edit', '#') if current_user.admin?
+      - else
+        .text-right
+          = link_to('Delete', stage_path(id: stage.id), method: :delete)

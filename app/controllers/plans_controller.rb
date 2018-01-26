@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   before_action :find, except: [:index, :new, :create]
-  before_action :validate_admin_or_creator, only: [:new, :edit, :update, :show, :create, :publish, :destroy]
+  before_action :validate_admin_or_creator, only: [:new, :edit, :update, :show, :create, :publish, :unpublish, :destroy]
 
   def new
     @plan = Plan.new
@@ -11,7 +11,8 @@ class PlansController < ApplicationController
     if plan.save
       redirect_to new_stage_path
     else
-      //
+      flash[:alert] = "Plan not saved: #{plan.errors.full_messages}"
+      redirect_to new_plan_path
     end
   end
 
@@ -27,7 +28,7 @@ class PlansController < ApplicationController
   end
 
   def destroy
-    @plan.delete
+    @plan.destroy
     redirect_to plans_path
   end
 
@@ -38,6 +39,11 @@ class PlansController < ApplicationController
 
   def publish
     @plan.update(published: true)
+    redirect_to plans_path
+  end
+
+  def unpublish
+    @plan.update(published: false)
     redirect_to plans_path
   end
 
