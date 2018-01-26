@@ -37,6 +37,8 @@ gem 'devise', '~> 4.3.0'
 
 gem 'tinymce-rails', '~> 4.1.6'
 
+gem 'sprockets-rails', '~> 2.3.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
