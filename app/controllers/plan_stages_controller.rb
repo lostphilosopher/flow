@@ -23,7 +23,7 @@ class PlanStagesController < ApplicationController
   end
 
   def destroy
-    @plan_stage.delete
+    @plan_stage.destroy
     @plan.refresh_order
     redirect_to plan_path(id: @plan.id)
   end

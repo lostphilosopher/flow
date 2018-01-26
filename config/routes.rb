@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :plan_stages
     member do
       post :publish
+      post :unpublish
     end
   end
   resources :stages

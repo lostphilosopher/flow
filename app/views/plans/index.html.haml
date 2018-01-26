@@ -6,45 +6,55 @@
     Unpublished Flows
     .small
       Only visible to admins and creators
+
+  .text-right
+    = link_to('Create a New Flow', new_plan_path, class: 'btn btn-default')
+    <br />
+    <br />
+
   - @unpublished_plans.each do |plan|
-    .panel
-      .panel-header
+    .panel.panel-default
+      .panel-heading
         %strong
           = plan.name
       .panel-body
         = plan.description
         %br
-
-          .text-right
-            = link_to('Preview Flow', plan_path(id: plan.id))
+      .panel-footer
+        .text-right
+          = link_to('Edit Flow', plan_path(id: plan.id))
+          = ' | '
+          = link_to('Add Stages to Flow', new_plan_plan_stage_path(plan_id: plan.id))
+          = ' | '
+          = link_to('Delete Flow', plan_path(id: plan.id), method: :delete)
+          - if plan.has_stages?
             = ' | '
-            = link_to('Add Stages to Flow', new_plan_plan_stage_path(plan_id: plan.id))
+            = link_to('Preview Flow', plan_plan_stage_path(plan_id: plan.id, id: plan.starting_plan_stage.id))
             = ' | '
             = link_to('Publish Flow', publish_plan_path(id: plan.id), method: :post)
-            = ' | '
-            = link_to('Delete Flow', plan_path(id: plan.id), method: :delete)
     %br
 
 %h2
   Available Flows
 
 - @published_plans.each do |plan|
-  .panel
-    .panel-header
+  .panel.panel-primary
+    .panel-heading
       %strong
         = plan.name
     .panel-body
       = plan.description
       %br
+    .panel-footer
       .text-right
         = link_to('Let\'s do it', plan_plan_stage_path(plan_id: plan.id, id: plan.starting_plan_stage.id), class: 'btn btn-primary')
 
         - if current_user.admin_or_creator?
           %br
           %br
-          %strong
-            Admin:
           = link_to('Edit Flow', plan_path(id: plan.id))
+          = ' | '
+          = link_to('Unpublish Flow', unpublish_plan_path(id: plan.id), method: :post)
           = ' | '
           = link_to('Delete Flow', plan_path(id: plan.id), method: :delete)
   %br

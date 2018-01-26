@@ -1,5 +1,5 @@
 %h2
-  Build Your Plan
+  Build Your Flow
   .small
     = @plan.name
   - if @previous_plan_stage.persisted?
@@ -7,11 +7,11 @@
       Select the next Stage
     %stong
       Previous Stage
-    = @previous_plan_stage.stage.name
+    = link_to("#{@previous_plan_stage.stage.name}", plan_plan_stage_path(plan_id: @plan.id, id: @previous_plan_stage.id))
   - else
-    Select the first Stage
+    %h3
+      Select the first Stage
 
 = render 'plan_stages/form'
 
-= link_to 'Review and Publish Your Plan', plan_path(id: @plan.id) if @previous_plan_stage.persisted?
-
+= link_to 'Review and Publish Your Flow', plan_path(id: @plan.id) if @previous_plan_stage.persisted?

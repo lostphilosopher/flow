@@ -10,15 +10,20 @@
 %br
 - @plan.stages.each do |stage|
   = stage.name
-  = link_to('Edit', edit_stage_path(id: stage.id))
-  = ' | '
   - plan_stage = PlanStage.find_by(plan_id: @plan.id, stage_id: stage.id)
+  = link_to('Preview', plan_plan_stage_path(plan_id: @plan.id, id: plan_stage.id))
+  = ' | '
   = link_to('Remove from Flow', plan_plan_stage_path(plan_id: @plan.id, id: plan_stage.id), method: :delete)
   %br
 = link_to('+ Add Stage to Flow', new_plan_plan_stage_path(plan_id: @plan.id))
 
 .text-right
-  = link_to('Edit Plan', edit_plan_path(id: @plan.id))
+  = link_to('Edit Flow', edit_plan_path(id: @plan.id))
   = ' | '
-  = link_to('Start', plan_plan_stage_path(plan_id: @plan.id, id: @plan.starting_plan_stage.id))
-  = button_to('Publish', publish_plan_path(id: @plan.id), method: :post) unless @plan.published?
+  = link_to('Delete Flow', plan_path(id: @plan.id), method: :delete)
+  - if @plan.has_stages?
+    = ' | '
+    = link_to('Preview', plan_plan_stage_path(plan_id: @plan.id, id: @plan.starting_plan_stage.id))
+    <br />
+    <br />
+    = button_to('Publish', publish_plan_path(id: @plan.id), method: :post, class: 'btn btn-primary') unless @plan.published?

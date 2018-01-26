@@ -1,3 +1,8 @@
+.panel.panel-info
+  .panel-heading
+    Note
+  .panel-body
+    Stages can be used in multiple Flows. For this reason Stages <strong>cannot</strong> be edited once they are created.
 = form_for(@stage) do |f|
   .form-group
     = f.label :name
@@ -5,12 +10,40 @@
   .form-group
     = f.label :description
     = f.text_field :description, class: 'form-control', placeholder: 'Description'
+  .panel.panel-info
+    .panel-heading
+      Supported Types
+    .panel-body
+      general = Simple text
+      <br />
+      todo = Same as general, but will send an email with the contents of the stage
+      <br />
+      survey =
+      = link_to('Wufoo Surveys', 'https://www.wufoo.com/')
+      <br />
+      video =
+      = link_to('YouTube Videos', 'https://www.youtube.com/')
+      <br />
+      - # @todo Find a discussion solution
+      discussion =
+      = link_to('TBD', '#')
+      <br />
   .form-group
     = f.label :stage_type
     - # @todo: Clean this up
     = select(:stage_type, :stage_type, options_for_select(['general', 'todo', 'survey', 'video', 'discussion']))
-  .form-group
+  #url.form-group
     = f.label :url
     = f.text_field :url, class: 'form-control', placeholder: 'URL'
   .form-controls
     = f.submit "Submit", class: 'btn btn-primary btn-lg'
+
+:javascript
+  $('#url').hide();
+  $('#stage_type_stage_type').change(function() {
+    if(['survey', 'video', 'discussion'].includes($('#stage_type_stage_type')[0].value)) {
+      $('#url').show();
+    } else {
+      $('#url').hide();
+    };
+  });
