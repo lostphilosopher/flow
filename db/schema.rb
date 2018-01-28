@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203183110) do
+ActiveRecord::Schema.define(version: 20180128200034) do
+
+  create_table "cms", force: :cascade do |t|
+    t.string   "name"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "plan_stages", force: :cascade do |t|
     t.integer  "plan_id"
@@ -35,8 +42,12 @@ ActiveRecord::Schema.define(version: 20171203183110) do
     t.string   "description"
     t.string   "url"
     t.string   "stage_type"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "resource_file_name"
+    t.string   "resource_content_type"
+    t.integer  "resource_file_size"
+    t.datetime "resource_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

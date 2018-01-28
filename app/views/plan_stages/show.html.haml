@@ -34,7 +34,10 @@
     var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
     })(document, 'script');
     </script>
-  - else
+
+  - if ['general', 'todo'].include? @stage.stage_type.to_s
+    = link_to('Download', stage_download_pdf_path(stage_id: @stage.id), class: 'btn btn-default')
+
   %br
   - if @plan_stage.last?
     = link_to('Plan Complete - Return to Plan Selection', plans_path)
