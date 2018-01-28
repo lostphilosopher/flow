@@ -1,5 +1,5 @@
 class StagesController < ApplicationController
-  before_action :find, except: [:index, :new, :create]
+  before_action :find, except: [:index, :new, :create, :download_pdf]
   before_action :validate_admin_or_creator, only: [:index, :new, :update, :create]
   before_action :validate_admin, only: [:edit]
 
@@ -36,6 +36,13 @@ class StagesController < ApplicationController
     redirect_to stages_path
   end
 
+  # Source: https://stackoverflow.com/questions/12939903/allowing-user-to-download-file-from-s3-storage
+  def download_pdf
+    @stage = Stage.find_by(id: params[:stage_id])
+    data = open(@stage.resource.url)
+    send_data data.read, :type => data.content_type, :x_sendfile => true
+  end
+
   private
 
   def find
@@ -47,7 +54,8 @@ class StagesController < ApplicationController
       :name,
       :stage_type,
       :description,
-      :url
+      :url,
+      :resource
     )
   end
 end

@@ -35,21 +35,40 @@
   #url.form-group
     = f.label :url
     = f.text_field :url, class: 'form-control', placeholder: 'URL'
+  #resource.form-group
+    = f.label :resource
+    %br
+    %I
+      = @stage.resource_file_name if @stage.resource_file_name
+    = f.file_field :resource, class: 'form-control', placeholder: 'resource'
   .form-controls
     = f.submit "Submit", class: 'btn btn-primary'
 
 :javascript
   var url_stage_types = ['survey', 'video', 'discussion'];
+  var resource_stage_types = ['general', 'todo'];
+
   var selected_stage_type = $('#stage_stage_type')[0].value;
+
   if(url_stage_types.includes(selected_stage_type)) {
+    $('#resource').hide();
+  } else if(resource_stage_types.includes(selected_stage_type)) {
+    $('#url').hide();
   } else {
     $('#url').hide();
+    $('#resource').hide();
   };
   $('#stage_stage_type').change(function() {
     selected_stage_type = $('#stage_stage_type')[0].value;
+
     if(url_stage_types.includes(selected_stage_type)) {
       $('#url').show();
+      $('#resource').hide();
+    } else if(resource_stage_types.includes(selected_stage_type)) {
+      $('#url').hide();
+      $('#resource').show();
     } else {
       $('#url').hide();
+      $('#resource').hide();
     };
   });

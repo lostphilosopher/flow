@@ -96,4 +96,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Paperclip configuration (https://devcenter.heroku.com/articles/paperclip-s3)
+  config.paperclip_defaults = {
+    :s3_protocol => :https,
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'flow-chronic-pain-production',
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+      :s3_region => ENV['AWS_REGION']
+    },
+    :url =>':s3_domain_url',
+    :path => '/:class/:attachment/:id_partition/:style/:filename'
+  }
 end
