@@ -1,0 +1,54 @@
+%h2
+  = @stage.name
+= image_tag(@stage.image.url, class: 'img-responsive') if @stage.image.present?
+%p
+  = @stage.description
+%br
+.text-center
+  - if @stage.stage_type == 'video'
+    .embed-responsive.embed-responsive-16by9
+      %iframe{:allowscriptaccess => 'always', :allowFullScreen => 'true', :frameborder => '0', :height => '315', :width => '560', :src => "#{@stage.url}", :title => "YouTube video player"}
+  - elsif @stage.stage_type == 'discussion'
+    = link_to("Discussion: #{@stage.name}", "#{@stage.url}", class: 'btn btn-default')
+    %br
+    %br
+  - elsif @stage.stage_type == 'survey'
+    <div id="wufoo-m1puiwx71b4a8ga">
+    Fill out my <a href="#{@stage.url}">online form</a>.
+    </div>
+    <script type="text/javascript">var m1puiwx71b4a8ga;(function(d, t) {
+    var s = d.createElement(t), options = {
+    'userName':'wandersen02',
+    'formHash':'m1puiwx71b4a8ga',
+    'autoResize':true,
+    'height':'373',
+    'async':true,
+    'host':'wufoo.com',
+    'header':'show',
+    'ssl':true};
+    s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+    s.onload = s.onreadystatechange = function() {
+    var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+    try { m1puiwx71b4a8ga = new WufooForm();m1puiwx71b4a8ga.initialize(options);m1puiwx71b4a8ga.display(); } catch (e) {}};
+    var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+    })(document, 'script');
+    </script>
+
+  - if ['general', 'todo'].include?(@stage.stage_type.to_s) && @stage.resource.present?
+    = link_to('Download', stage_download_pdf_path(stage_id: @stage.id), class: 'btn btn-default')
+    %br
+
+  %br
+  - if @plan_stage.last?
+    = link_to('Plan Complete - Return to Plan Selection', plans_path)
+  - else
+    %div#timer
+    = link_to('Next', plan_plan_stage_path(plan_id: @plan.id, id: @plan_stage.next_plan_stage.id), class: 'btn btn-primary')
+
+:javascript
+  $('#timer').append("Please don't proceed until you are finished with this content.");
+  $('.btn-primary').hide();
+  setTimeout(function() {
+     $('#timer').hide();
+     $('.btn-primary').fadeIn();
+  }, 5000);

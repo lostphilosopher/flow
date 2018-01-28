@@ -1,6 +1,8 @@
 class Stage < ApplicationRecord
   has_attached_file :resource
   do_not_validate_attachment_file_type :resource
+  has_attached_file :image
+  do_not_validate_attachment_file_type :image
 
   validates :name, presence: true
   validates :description, presence: true

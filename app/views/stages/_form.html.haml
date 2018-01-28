@@ -32,6 +32,12 @@
     = f.label :stage_type
     - # @todo: Clean this up
     = f.select(:stage_type, options_for_select(['general', 'todo', 'survey', 'video', 'discussion'], @stage.stage_type.to_s))
+  #image.form-group
+    = f.label :image
+    %br
+    %I
+      = @stage.image_file_name if @stage.image_file_name
+    = f.file_field :image, class: 'form-control', placeholder: 'image'
   #url.form-group
     = f.label :url
     = f.text_field :url, class: 'form-control', placeholder: 'URL'
@@ -47,16 +53,22 @@
 :javascript
   var url_stage_types = ['survey', 'video', 'discussion'];
   var resource_stage_types = ['general', 'todo'];
+  // var image_stage_types = ['general', 'todo'];
 
   var selected_stage_type = $('#stage_stage_type')[0].value;
 
   if(url_stage_types.includes(selected_stage_type)) {
+    $('#url').show();
     $('#resource').hide();
+    $('#image').hide();
   } else if(resource_stage_types.includes(selected_stage_type)) {
     $('#url').hide();
+    $('#resource').show();
+    $('#image').show();
   } else {
     $('#url').hide();
     $('#resource').hide();
+    $('#image').hide();
   };
   $('#stage_stage_type').change(function() {
     selected_stage_type = $('#stage_stage_type')[0].value;
@@ -64,11 +76,14 @@
     if(url_stage_types.includes(selected_stage_type)) {
       $('#url').show();
       $('#resource').hide();
+      $('#image').hide();
     } else if(resource_stage_types.includes(selected_stage_type)) {
       $('#url').hide();
       $('#resource').show();
+      $('#image').show();
     } else {
       $('#url').hide();
       $('#resource').hide();
+      $('#image').hide();
     };
   });

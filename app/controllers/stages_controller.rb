@@ -55,7 +55,8 @@ class StagesController < ApplicationController
       :stage_type,
       :description,
       :url,
-      :resource
+      :resource,
+      :image
     )
   end
 end
