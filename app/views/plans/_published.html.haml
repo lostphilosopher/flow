@@ -1,0 +1,29 @@
+- @published_plans.each do |plan|
+  .panel.panel-primary
+    .panel-heading
+      %strong
+        = plan.name
+    .panel-body
+      .container-fluid
+        .row
+          - if plan.image.present?
+            .col-sm-4
+              = image_tag(plan.image.url, class: 'img-responsive')
+            .col-sm-8
+              = plan.description
+          - else
+            .col-xs-12
+              = plan.description
+      %br
+    .panel-footer
+      .text-right
+        = link_to('Let\'s do it', plan_plan_stage_path(plan_id: plan.id, id: plan.starting_plan_stage.id), class: 'btn btn-primary')
+
+        - if current_user && current_user.admin_or_creator?
+          %br
+          %br
+          = link_to('Manage Flow', plan_path(id: plan.id))
+          = ' | '
+          = link_to('Unpublish Flow', unpublish_plan_path(id: plan.id), method: :post)
+
+  %br
