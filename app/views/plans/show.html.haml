@@ -1,8 +1,16 @@
 %h1
   = @plan.name
 %br
-%p
-  = @plan.description
+.container-fluid
+  .row
+    - if @plan.image.present?
+      .col-sm-4
+        = image_tag(@plan.image.url, class: 'img-responsive')
+      .col-sm-8
+        = @plan.description
+    - else
+      .col-xs-12
+        = @plan.description
 
 %hr
   %h2
@@ -30,3 +38,4 @@
     <br />
     <br />
     = button_to('Publish', publish_plan_path(id: @plan.id), method: :post, class: 'btn btn-primary') unless @plan.published?
+    = button_to('Unpublish', unpublish_plan_path(id: @plan.id), method: :post, class: 'btn btn-default') if @plan.published?

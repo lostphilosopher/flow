@@ -5,5 +5,11 @@
   .form-group
     = f.label :description
     = f.text_field :description, class: 'form-control', placeholder: 'Description'
+  .form-group
+    = f.label :image
+    %br
+    %I
+      = @plan.image_file_name if @plan.image_file_name
+    = f.file_field :image, class: 'form-control', placeholder: 'image'
   .form-controls
     = f.submit "Submit", class: 'btn btn-primary'

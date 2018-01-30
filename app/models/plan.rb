@@ -3,6 +3,8 @@ class Plan < ApplicationRecord
   has_many :stages, through: :plan_stages
   validates :name, presence: true
   validates :description, presence: true
+  has_attached_file :image
+  do_not_validate_attachment_file_type :image
 
   def has_stages?
     plan_stages.count > 0
