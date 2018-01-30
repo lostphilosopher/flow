@@ -1,7 +1,7 @@
 %h1
   Flows
 
-- if current_user.admin_or_creator?
+- if current_user && current_user.admin_or_creator?
   %h2
     Unpublished Flows
     .small
@@ -49,7 +49,7 @@
       .text-right
         = link_to('Let\'s do it', plan_plan_stage_path(plan_id: plan.id, id: plan.starting_plan_stage.id), class: 'btn btn-primary')
 
-        - if current_user.admin_or_creator?
+        - if current_user && current_user.admin_or_creator?
           %br
           %br
           = link_to('Edit Flow', plan_path(id: plan.id))

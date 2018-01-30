@@ -1,9 +1,12 @@
 class AdminController < ApplicationController
-  before_action :validate_admin_or_creator, only: [:index]
-  before_action :validate_admin, except: [:index]
+  before_action :validate_admin_or_creator, only: [:index, :tutorial]
+  before_action :validate_admin, except: [:index, :tutorial]
   before_action :find_user, only: [:make_admin, :make_creator, :make_user, :delete_user]
 
   def index
+  end
+
+  def tutorial
   end
 
   # Users come from Devise hack availability here
