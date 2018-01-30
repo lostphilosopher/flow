@@ -9,16 +9,10 @@
     = link_to 'Create a Stage', new_stage_path
 
   .button-box
-    = link_to 'Add Stages to a Flow', plans_path
+    = link_to 'Manage Flows', plans_path
 
   .button-box
-    = link_to 'Publish a Flow', plans_path
-
-  .button-box
-    = link_to 'Delete a Stage', stages_path
-
-  .button-box
-    = link_to 'Edit a Flow', plans_path
+    = link_to 'Manage Stages', stages_path
 
   .button-box
     = link_to 'Tutorial', admin_tutorial_path
@@ -29,8 +23,5 @@
     Admin Options
 
   .button-box-container
-    .button-box
-      = link_to 'Edit a Stage', stages_path
-
     .button-box
       = link_to 'Manage Users', admin_users_path
