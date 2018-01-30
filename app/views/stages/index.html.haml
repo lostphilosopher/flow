@@ -2,8 +2,8 @@
   Stages
   .small
     Stages can be used in multiple Flows.
-    To avoid unintended consequences you cannot edit a Stage,
-    and you can only delete Stages that are not currently assigned to a Flow
+    To avoid unintended consequences you cannot edit or delete a Stage
+    once it has been assigned to a Flow.
 
 - @stages.each do |stage|
   .panel.panel-info
@@ -17,11 +17,14 @@
           = link_to("#{plan.name}", plan_path(id: plan.id))
           <br />
         .text-right
-          = link_to('Edit', edit_stage_path(id: stage.id)) if current_user.admin?
-      - else
-        Not a part of any Flow.
-        .text-right
           - if current_user.admin?
             = link_to('Edit', edit_stage_path(id: stage.id))
             = ' | '
+            = link_to('Delete', stage_path(id: stage.id), method: :delete)
+      - else
+        %i
+          Not a part of any Flow.
+        .text-right
+          = link_to('Edit', edit_stage_path(id: stage.id))
+          = ' | '
           = link_to('Delete', stage_path(id: stage.id), method: :delete)
