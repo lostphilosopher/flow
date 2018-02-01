@@ -17,6 +17,8 @@ class PlanStagesController < ApplicationController
   end
 
   def show
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true);
+
     if @stage && @stage.stage_type == 'todo'
       PlanStageMailer.homework(current_user, @stage).deliver_later
     end

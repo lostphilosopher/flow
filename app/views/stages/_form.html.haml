@@ -1,10 +1,14 @@
+%link{ rel: "stylesheet", href: "https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css" }
+%script{ src: "https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js" }
+
 = form_for(@stage) do |f|
   .form-group
     = f.label :name
     = f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Name'
+  %div#description_markdown{data: "#{@stage.description}"}
   .form-group
     = f.label :description
-    = f.text_field :description, class: 'form-control', placeholder: 'Description'
+    = f.text_area :description, class: 'form-control', placeholder: 'Description'
   .panel.panel-info
     .panel-heading
       Supported Types
@@ -45,6 +49,12 @@
     = f.submit "Submit", class: 'btn btn-primary'
 
 :javascript
+  // Markdown Handling
+  var simplemde = new SimpleMDE({ element: document.getElementById("stage_description") });
+  if ($('#description_markdown').attr('data')) {
+    simplemde.value($('#description_markdown').attr('data'));
+  }
+
   var url_stage_types = ['survey', 'video', 'discussion'];
   var resource_stage_types = ['general', 'todo'];
   // var image_stage_types = ['general', 'todo'];
