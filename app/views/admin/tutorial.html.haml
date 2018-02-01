@@ -86,7 +86,7 @@
     .text-center
       = link_to 'Create a Flow', new_plan_path
       >
-      = link_to 'Create a Stage', new_stage_path
+      = link_to('Create a Stage', new_stage_path, 'data-turbolinks' => false)
       >
       = link_to 'Add Stages to a Flow', plans_path
       >

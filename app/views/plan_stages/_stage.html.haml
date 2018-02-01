@@ -2,7 +2,7 @@
   = @stage.name
 = image_tag(@stage.image.url, class: 'img-responsive') if @stage.image.present?
 %p
-  = @stage.description
+  = @markdown.render(@stage.description).html_safe
 %br
 .text-center
   - if @stage.stage_type == 'video'
