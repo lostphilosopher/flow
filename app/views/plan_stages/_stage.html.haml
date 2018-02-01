@@ -43,7 +43,7 @@
   - if @plan_stage.last?
     = link_to('Plan Complete - Return to Plan Selection', plans_path)
   - else
-    %div#timer
+    %div#timer{ data: "#{@stage.timer}" }
     = link_to('Next', plan_plan_stage_path(plan_id: @plan.id, id: @plan_stage.next_plan_stage.id), class: 'btn btn-primary')
 
 :javascript
@@ -52,4 +52,4 @@
   setTimeout(function() {
      $('#timer').hide();
      $('.btn-primary').fadeIn();
-  }, 5000);
+  }, parseInt($('#timer').attr('data')) * 1000);
