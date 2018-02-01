@@ -5,6 +5,10 @@
   .form-group
     = f.label :description
     = f.text_field :description, class: 'form-control', placeholder: 'Description'
+  .form-group
+    = f.label 'Timer (in Seconds)'
+    = f.number_field :timer, class: 'form-control', placeholder: 'Number of seconds'
+    %div#human_friendly_counter
   .panel.panel-info
     .panel-heading
       Supported Types
@@ -80,4 +84,20 @@
       $('#resource').hide();
       $('#image').hide();
     };
+  });
+
+
+  var timer = $('#stage_timer')[0].value; // Number of seconds
+  var timer = $('#stage_timer')[0].value;
+  var minutes = Math.floor(timer / 60);
+  var seconds = timer - minutes * 60;
+
+  $('#human_friendly_counter').html(minutes + " minute\(s\) and " + seconds + " second\(s\)");
+
+  $('#stage_timer').on('propertychange input', function() {
+    var timer = $('#stage_timer')[0].value;
+    var minutes = Math.floor(timer / 60);
+    var seconds = timer - minutes * 60;
+
+    $('#human_friendly_counter').html(minutes + " minute\(s\) and " + seconds + " second\(s\)");
   });
